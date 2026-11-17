@@ -26,14 +26,29 @@
 .letter-mascot[data-ready="true"] canvas{background-image:none}
 .note-section{padding-right:100px;gap:65px}
 @media(hover:hover) and (pointer:fine){.toon:hover canvas{animation:character-wiggle .56s cubic-bezier(.37,0,.63,1)}}
+/* Keep the greeting beside the portrait and visible on the opening screen. */
+@media(min-width:851px){.mascot.toon{top:clamp(180px,26svh,240px);bottom:auto}}
 @media(min-width:1001px){.mascot.toon{left:15px;width:260px;height:285px}}
 @media(max-width:1000px){.letter-mascot{width:135px;height:150px;right:-105px}.note-section{padding-right:85px;gap:45px}.project-mascot{width:150px}}
-@media(max-width:850px){.mascot.toon{width:130px;height:143px}.project-mascot{width:155px;bottom:55px}.note-section{padding-right:30px;gap:100px}.letter-mascot{top:-90px;right:3px;bottom:auto;width:112px;height:122px}}
+@media(max-width:850px){.mascot.toon{width:130px;height:143px;bottom:18px}.project-mascot{width:155px;bottom:55px}.note-section{padding-right:30px;gap:100px}.letter-mascot{top:-90px;right:3px;bottom:auto;width:112px;height:122px}}
 @media(max-width:680px){.project-mascot{right:0;bottom:53px;width:115px}.note-section{gap:100px}.art .concept-label{right:95px;font-size:9px}.art .phone{right:72px}.art .globe{right:75px}.art .focus-ring{right:70px}}
 .paused .pose-enter,.paused .toon:hover canvas{animation:none!important}
 @keyframes character-enter{from{opacity:0;transform:translateY(10px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes character-wiggle{0%,100%{transform:rotate(0)}30%{transform:rotate(-5deg)}65%{transform:rotate(4deg)}}
 @media(prefers-reduced-motion:reduce){.toon,.toon canvas{animation:none!important;transition:none!important}}
+
+.hero-actions{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap}
+.hero-email{font-size:14px;text-decoration:underline;text-underline-offset:4px}
+.booking{max-width:1100px;margin:0 auto 120px;padding:48px;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:60px;border-radius:14px;box-shadow:0 18px 24px #76360030}
+.booking h2{font-size:clamp(34px,4vw,52px);margin-bottom:20px}
+.booking p{margin-bottom:0;max-width:470px}
+.booking .eyebrow{margin-bottom:18px}
+.booking-details .booking-duration{font-size:14px;margin-bottom:16px}
+.booking-details .booking-caption{font-size:13px;line-height:1.5;margin-top:18px;color:#515b5d}
+.desk-booking{font-weight:600;border-bottom:1px solid #fff8ed88;margin-bottom:12px}
+@media(max-width:1150px){.booking{margin-left:30px;margin-right:30px}}
+@media(max-width:850px){.hero-actions .primary{margin:0}.booking{max-width:640px;margin:0 auto 80px;padding:32px;grid-template-columns:1fr;gap:28px}.booking .primary{margin:0;max-width:none}.hero-actions{gap:16px}}
+@media(max-width:680px){.booking{margin-left:22px;margin-right:22px;padding:30px 24px}.hero-actions{flex-direction:column}.hero-actions .primary{width:100%}}
 
 /* Full-width nighttime closing scene, with the same framing and type overlay. */
 .desk-footer{max-width:none;width:100%;margin:0;padding:32px 20px 24px;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto auto;gap:0;position:relative;overflow:hidden;color:#fff8ed;background:#050f16}
