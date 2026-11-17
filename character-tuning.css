@@ -1,0 +1,53 @@
+/* The reference's wave, project, and personal-letter character scenes. */
+.toon{display:block;position:relative;aspect-ratio:1;isolation:isolate}
+.toon canvas{display:block;width:100%;height:100%;object-fit:contain;transform-origin:50% 90%;background-size:contain;background-repeat:no-repeat;background-position:center}
+.toon video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none}
+.toon[data-playing="true"] video{opacity:1}
+.toon[data-playing="true"] canvas{visibility:hidden}
+.toon .character-loop-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none}
+.toon[data-renderer="animated-image"][data-playing="true"] .character-loop-image{opacity:1}
+.toon[data-renderer="animated-image"] video{opacity:0}
+.mascot.toon{position:absolute;animation:none;filter:drop-shadow(0 10px 9px #70330b26)}
+.mascot canvas{background-image:url('assets/character.png')}
+.toon[data-ready="true"] canvas{background-image:none}
+.toon:after{content:'';position:absolute;left:22%;right:22%;height:4%;bottom:1%;border-radius:50%;background:radial-gradient(ellipse,#28180c22,transparent 70%);z-index:-1}
+.project-visual{position:relative;overflow:visible}
+.browser-bar{border-radius:12px 12px 0 0;background:var(--cream)}
+.visual-footer{border-radius:0 0 12px 12px;background:var(--cream)}
+.project-mascot{position:absolute;right:2%;bottom:60px;width:clamp(130px,14vw,215px);pointer-events:auto;z-index:3}
+.project-mascot canvas{background-image:url('assets/character-projects.png');background-size:200% 200%;background-position:0 0}
+.project-mascot[data-pose="1"] canvas{background-position:100% 0}
+.project-mascot[data-pose="2"] canvas{background-position:0 100%}
+.project-mascot[data-pose="3"] canvas{background-position:100% 100%}
+.project-mascot[data-ready="true"] canvas{background-image:none}
+.pose-enter{animation:character-enter .42s cubic-bezier(.34,1.4,.64,1) both}
+.letter-mascot{position:absolute;right:-145px;bottom:30px;width:170px;height:185px;transform:rotate(-2deg)}
+.letter-mascot canvas{background-image:url('assets/character-letter.png')}
+.letter-mascot[data-ready="true"] canvas{background-image:none}
+.note-section{padding-right:100px;gap:65px}
+@media(hover:hover) and (pointer:fine){.toon:hover canvas{animation:character-wiggle .56s cubic-bezier(.37,0,.63,1)}}
+@media(min-width:1001px){.mascot.toon{left:15px;width:260px;height:285px}}
+@media(max-width:1000px){.letter-mascot{width:135px;height:150px;right:-105px}.note-section{padding-right:85px;gap:45px}.project-mascot{width:150px}}
+@media(max-width:850px){.mascot.toon{width:130px;height:143px}.project-mascot{width:155px;bottom:55px}.note-section{padding-right:30px;gap:100px}.letter-mascot{top:-90px;right:3px;bottom:auto;width:112px;height:122px}}
+@media(max-width:680px){.project-mascot{right:0;bottom:53px;width:115px}.note-section{gap:100px}.art .concept-label{right:95px;font-size:9px}.art .phone{right:72px}.art .globe{right:75px}.art .focus-ring{right:70px}}
+.paused .pose-enter,.paused .toon:hover canvas{animation:none!important}
+@keyframes character-enter{from{opacity:0;transform:translateY(10px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes character-wiggle{0%,100%{transform:rotate(0)}30%{transform:rotate(-5deg)}65%{transform:rotate(4deg)}}
+@media(prefers-reduced-motion:reduce){.toon,.toon canvas{animation:none!important;transition:none!important}}
+
+/* Full-width nighttime closing scene, with the same framing and type overlay. */
+.desk-footer{max-width:none;width:100%;margin:0;padding:32px 20px 24px;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto auto;gap:0;position:relative;overflow:hidden;color:#fff8ed;background:#050f16}
+.desk-scene.toon{position:absolute;inset:0;aspect-ratio:auto;isolation:auto;mask-image:linear-gradient(transparent,#000 30%);-webkit-mask-image:linear-gradient(transparent,#000 30%)}
+.desk-scene canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;background-image:url('assets/character-desk.png');background-size:cover;background-position:70% 50%}
+.desk-scene video{object-fit:cover;object-position:70% 50%}
+.desk-scene .character-loop-image{object-fit:cover;object-position:70% 50%}
+.desk-scene.toon:hover canvas{animation:none}
+.desk-scene.toon:after{content:'';position:absolute;inset:0;width:auto;height:auto;border-radius:0;background:linear-gradient(#050f16b3,transparent 22%),linear-gradient(transparent 60%,#050f16cc);z-index:1;pointer-events:none}
+.desk-footer>:not(.desk-scene){position:relative;z-index:2}
+.desk-contact{display:flex;flex-direction:column;align-items:flex-end;font-size:16px;line-height:1.55}
+.desk-name{grid-row:3;font-size:11.6vw;font-weight:600;line-height:.85;letter-spacing:-.045em;white-space:nowrap;margin:0 0 36px}
+.desk-legal{grid-row:4;display:flex;align-items:center;gap:25px;font-size:12px;line-height:1.4}
+.desk-legal a{margin-left:auto}
+.desk-legal button{background:none;border:0;font-size:12px;color:inherit;padding:5px 0}
+.desk-footer :focus-visible{outline-color:#fff8ed}
+@media(max-width:760px){.desk-footer{min-height:88svh;padding:26px 16px 22px}.desk-contact{align-items:flex-start;font-size:14px}.desk-name{font-size:16vw;white-space:normal;max-width:95%;line-height:.9;margin-bottom:30px}.desk-legal{gap:14px;font-size:10px;flex-wrap:wrap}.desk-legal button{font-size:10px}.desk-legal a{margin-left:auto}}
