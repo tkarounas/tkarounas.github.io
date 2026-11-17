@@ -1,0 +1,29 @@
+{
+  "wave": {
+    "webm": "assets/loops/wave.webm",
+    "webp": "assets/loops/wave.webp"
+  },
+  "actias-luna": {
+    "webm": "assets/loops/actias-luna.webm",
+    "webp": "assets/loops/actias-luna.webp"
+  },
+  "standby": {
+    "webm": "assets/loops/standby.webm",
+    "webp": "assets/loops/standby.webp"
+  },
+  "aurelius": {
+    "webm": "assets/loops/aurelius.webm",
+    "webp": "assets/loops/aurelius.webp"
+  },
+  "maximus": {
+    "webm": "assets/loops/maximus.webm",
+    "webp": "assets/loops/maximus.webp"
+  },
+  "letter": {
+    "webm": "assets/loops/letter.webm",
+    "webp": "assets/loops/letter.webp"
+  },
+  "typing": {
+    "mp4": "assets/loops/typing.mp4"
+  }
+}
