@@ -1,5 +1,5 @@
 const projects = [
-  { theme:'luna', label:'actias-luna / room awareness', stack:'React · Python · ESP32 · Gemini', art:'<div class="art-kicker">ACTIAS LUNA</div><h3>A room that<br>understands.</h3><div class="room"><div class="room-grid"></div><span class="sensor s1"></span><span class="sensor s2"></span><span class="sensor s3"></span><img class="moth" src="assets/moth.png" alt="Actias Luna moth artwork" width="160" height="160"></div><span class="concept-label">Concept illustration · Camera-free Wi-Fi sensing</span>' },
+  { theme:'luna', label:'actias-luna / room awareness', stack:'React · Python · ESP32 · Gemini', art:"<div class=\"actias-gallery\"><a class=\"actias-fullsize\" href=\"assets/actias-interface.jpg\" target=\"_blank\" rel=\"noopener\" aria-label=\"Open full-size Actias 3D room screenshot\"><img class=\"actias-screenshot\" src=\"assets/actias-interface.jpg\" alt=\"Actias live 3D room dashboard showing a person's estimated position using Wi-Fi sensing\" width=\"806\" height=\"453\"></a><div class=\"actias-gallery-nav\" role=\"group\" aria-label=\"Actias project screenshots\"><button type=\"button\" data-actias-shot=\"0\" aria-pressed=\"true\" aria-label=\"Show 3D room dashboard\"><img src=\"assets/actias-interface.jpg\" alt=\"\" width=\"806\" height=\"453\"></button><button type=\"button\" data-actias-shot=\"1\" aria-pressed=\"false\" aria-label=\"Show voice assistant walkthrough\"><img src=\"assets/actias-room.jpg\" alt=\"\" width=\"806\" height=\"453\" loading=\"lazy\"></button><button type=\"button\" data-actias-shot=\"2\" aria-pressed=\"false\" aria-label=\"Show Actias title artwork\"><img src=\"assets/actias-title.jpg\" alt=\"\" width=\"806\" height=\"453\" loading=\"lazy\"></button></div><p class=\"actias-gallery-caption\" aria-live=\"polite\"><span>Live 3D room dashboard</span><span class=\"actias-gallery-count\">01 / 03</span></p></div>" },
   { theme:'standby', label:'standby / voice-powered travel', stack:'Python · Node.js · Snowflake · OpenAI', art:'<div class="art-kicker">STANDBY</div><h3>One sentence.<br>Your whole trip.</h3><div class="globe" aria-hidden="true"></div><span class="concept-label">Concept illustration · Voice-powered travel briefings</span>' },
   { theme:'aurelius', label:'aurelius / find your focus', stack:'React · Python · FastAPI · Arduino', art:'<div class="art-kicker">AURELIUS</div><h3>A little help<br>staying focused.</h3><div class="focus-ring" aria-hidden="true"><strong>25:00</strong><small>FOCUS SESSION</small></div><span class="concept-label">Concept illustration · AI-powered study focus system</span>' },
   { theme:'maximus', label:'maximus / build a better everyday', stack:'SwiftUI · MVVM · SwiftData', art:'<div class="art-kicker">MAXIMUS · IN DEVELOPMENT</div><h3>Make room<br>for progress.</h3><div class="phone" aria-hidden="true"><small>YOUR EVERYDAY, TOGETHER</small><strong>MAXIMUS</strong><div class="phone-line">◉ Habits</div><div class="phone-line">↗ Personal finance</div><div class="phone-line">✦ AI advisor</div><div class="phone-line">◎ Goals</div></div><span class="concept-label">Concept illustration · Personal finance & life tracking</span>' }
@@ -39,3 +39,23 @@ function setMotion(paused) {
 setMotion(reducedMotion.matches);
 motionToggle.addEventListener('click', () => setMotion(!document.body.classList.contains('paused')));
 reducedMotion.addEventListener('change', event => setMotion(event.matches));
+
+const actiasShots = [
+  {src:'assets/actias-interface.jpg', title:'Live 3D room dashboard', alt:"Actias live 3D room dashboard showing a person's estimated position using Wi-Fi sensing"},
+  {src:'assets/actias-room.jpg', title:'Voice assistant · Phone-call walkthrough', alt:'Actias voice assistant phone-call walkthrough for checking room activity'},
+  {src:'assets/actias-title.jpg', title:'Actias · Project artwork', alt:'Actias lettering formed from white moths over a green nature-inspired background'}
+];
+document.querySelector('#project-art').addEventListener('click', event => {
+  const button = event.target.closest('[data-actias-shot]');
+  if (!button) return;
+  const index = Number(button.dataset.actiasShot), shot = actiasShots[index];
+  if (!shot) return;
+  const gallery = button.closest('.actias-gallery');
+  const image = gallery.querySelector('.actias-screenshot');
+  image.src = shot.src; image.alt = shot.alt;
+  const link = gallery.querySelector('.actias-fullsize');
+  link.href = shot.src; link.setAttribute('aria-label', 'Open full-size ' + shot.title);
+  gallery.querySelectorAll('[data-actias-shot]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  gallery.querySelector('.actias-gallery-caption span').textContent = shot.title;
+  gallery.querySelector('.actias-gallery-count').textContent = '0' + (index + 1) + ' / 03';
+});
