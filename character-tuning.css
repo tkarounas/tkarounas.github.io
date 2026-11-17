@@ -12,6 +12,17 @@
 .toon[data-ready="true"] canvas{background-image:none}
 .toon:after{content:'';position:absolute;left:22%;right:22%;height:4%;bottom:1%;border-radius:50%;background:radial-gradient(ellipse,#28180c22,transparent 70%);z-index:-1}
 .project-visual{position:relative;overflow:visible}
+.art.luna{padding:0;min-height:0;background:#09251b}
+.actias-fullsize{display:block;cursor:zoom-in}
+.actias-screenshot{display:block;width:100%;height:auto;aspect-ratio:806/453;object-fit:contain}
+.actias-gallery-nav{display:flex;gap:8px;padding:14px 145px 0 14px}
+.actias-gallery-nav button{background:none;border:2px solid transparent;border-radius:6px;padding:2px;flex:1;max-width:85px;min-width:0;opacity:.6;transition:opacity .15s,border-color .15s}
+.actias-gallery-nav button:hover,.actias-gallery-nav button[aria-pressed="true"]{opacity:1;border-color:#d9edb1}
+.actias-gallery-nav img{aspect-ratio:806/453;width:100%;height:auto;object-fit:contain;border-radius:2px}
+.actias-gallery-caption{display:flex;justify-content:space-between;gap:16px;margin:0;padding:12px 16px;font-size:10px;line-height:1.4;color:#d9edce}
+.actias-gallery-count{white-space:nowrap;opacity:.65}
+.project-links{display:flex;flex-wrap:wrap;gap:12px 22px}
+@media(max-width:680px){.actias-gallery-nav{padding-right:105px;gap:5px}.actias-gallery-caption{font-size:9px;padding:10px 12px}}
 .browser-bar{border-radius:12px 12px 0 0;background:var(--cream)}
 .visual-footer{border-radius:0 0 12px 12px;background:var(--cream)}
 .project-mascot{position:absolute;right:2%;bottom:60px;width:clamp(130px,14vw,215px);pointer-events:auto;z-index:3}
